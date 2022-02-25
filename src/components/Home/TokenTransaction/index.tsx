@@ -3,8 +3,12 @@ import { Col, Label, Table } from 'sezy-design'
 import Arrow from 'sezy-design/components/icon/solid/arrow'
 import _ from 'lodash';
 import * as  S from './styled';
+import HomeContext from '~contexts/Home';
 
 const TokenTransaction = () => {
+    
+    const context = React.useContext(HomeContext);
+    console.log(context);
     return <>
         <S.Title size='l'>TOKEN transaction</S.Title>
         <S.HeaderTable type='nude' columns={tableColumns as any} />

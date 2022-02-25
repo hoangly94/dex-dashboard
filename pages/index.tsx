@@ -1,30 +1,32 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { createContext } from 'react';
 import Component from '~components/Home';
+import HomeContext from '~contexts/Home';
 
-const Home: NextPage = () => {
-  return <Component />
+const Home: NextPage = (props) => {
+  // const { locale, locales, asPath } = useRouter();
+  return (
+    <HomeContext.Provider value={props['lang']}>
+      <Component />
+    </HomeContext.Provider>
+  );
 }
 
-// export async function getStaticProps({ locale }) {
-//   // Call an external API endpoint to get posts.
-//   // You can use any data fetching library
-//   const res = await fetch(`https://.../posts?locale=${locale}`)
-//   const posts = await res.json()
+export async function getStaticProps({ locale, locales }) {
+  const res = await fetch(`${process.env.ROOT_URL}/langs/dashboard/${locale}.json`)
+  const lang = await res.json()
+  if (lang.length === 0) {
+    return {
+      notFound: true,
+    }
+  }
 
-//   if (posts.length === 0) {
-//     return {
-//       notFound: true,
-//     }
-//   }
-
-//   // By returning { props: posts }, the Blog component
-//   // will receive `posts` as a prop at build time
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }
+  return {
+    props: {
+      lang,
+    },
+  }
+}
 
 export default Home

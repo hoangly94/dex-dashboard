@@ -6,11 +6,8 @@ import { Logo } from '~components/icon';
 import TokenTransaction from '~components/Home/TokenTransaction';
 import * as  S from './styled';
 
-const TuVanCoPhieu = () => {
+const Home = () => {
     const router = useRouter()
-    const { locale, locales, asPath } = useRouter();
-    console.log(locale);
-    console.log(locales);
     return (
         <>
             {/* <Section>
@@ -32,4 +29,5 @@ const TuVanCoPhieu = () => {
     )
 }
 
-export default TuVanCoPhieu
+
+export default Home
