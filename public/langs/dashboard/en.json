@@ -1,3 +1,7 @@
 {
-    "token_transaction":"TOKEN transaction"
+    "token":"token",
+    "transaction":"transaction",
+    "price":"price",
+    "amount":"amount",
+    "total":"total"
 }

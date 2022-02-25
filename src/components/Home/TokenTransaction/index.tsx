@@ -6,11 +6,10 @@ import * as  S from './styled';
 import HomeContext from '~contexts/Home';
 
 const TokenTransaction = () => {
-    
     const context = React.useContext(HomeContext);
-    console.log(context);
+    const tableColumns = getTableColumns(context.price, context.amount, context.total);
     return <>
-        <S.Title size='l'>TOKEN transaction</S.Title>
+        <S.Title size='l'>{context.token} {context.transaction}</S.Title>
         <S.HeaderTable type='nude' columns={tableColumns as any} />
         <S.DataTable1 type='nude' columns={tableColumns as any} data={tableData} hasHeader={false} />
         <S.HighlightData>
@@ -24,18 +23,18 @@ const TokenTransaction = () => {
     </>
 }
 
-const tableColumns = [
+const getTableColumns = (price, amount, total)=> [
     {
         index: 'price',
-        label: 'Price(USDT)',
+        label:  `${price}(USDT)`,
     },
     {
         index: 'amount',
-        label: 'Amount(BTC)',
+        label: `${amount}(BTC)`,
     },
     {
         index: 'total',
-        label: 'Total',
+        label: total,
         align: 'right'
     }
 ];

@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Title = styled(Label)`
     padding: 1.4rem 1.8rem 1rem;
     display:block;
+    text-transform: uppercase;
 `;
 
 const tableScrollBarWidth = '6px';
@@ -57,6 +58,9 @@ export const HeaderTable = styled(Table)`
     ${tableWrapperStyle}
     & tbody{
         display:none;
+    }
+    & th{
+        text-transform: capitalize;
     }
     & th:last-child{
         padding-right: calc(${tableHeaderPaddingRight} + ${tableScrollBarWidth}) !important;
